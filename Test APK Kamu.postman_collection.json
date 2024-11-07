@@ -1,0 +1,757 @@
+{
+	"info": {
+		"_postman_id": "8e6ab90e-399f-4575-9ccc-8932aef091c3",
+		"name": "Test APK Kamu",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16301864"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var respons = JSON.parse(responseBody)\r",
+									"pm.collectionVariables.set(\"email\", respons.data.email);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"{{$randomFirstName}}\",\r\n   \"email\": \"{{$randomEmail}}\",\r\n   \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TAK}}/registration",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"registration"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Pass Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"name\": \"Giles\",\r\n   \"email\": \"Enrique96@gmail.com\",\r\n   \"password\": \"Password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://kasir-api.belajarqa.com/registration",
+									"protocol": "https",
+									"host": [
+										"kasir-api",
+										"belajarqa",
+										"com"
+									],
+									"path": [
+										"registration"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "origin,User-Agent"
+								},
+								{
+									"key": "access-control-expose-headers",
+									"value": "WWW-Authenticate,Server-Authorization"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache"
+								},
+								{
+									"key": "content-length",
+									"value": "120"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 07 Nov 2024 13:38:21 GMT"
+								},
+								{
+									"key": "server",
+									"value": "LiteSpeed"
+								},
+								{
+									"key": "platform",
+									"value": "hostinger"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=2592000, h3-29=\":443\"; ma=2592000, h3-Q050=\":443\"; ma=2592000, h3-Q046=\":443\"; ma=2592000, h3-Q043=\":443\"; ma=2592000, quic=\":443\"; ma=2592000; v=\"43,46\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Toko berhasil didaftarkan\",\n    \"data\": {\n        \"name\": \"Madisyn\",\n        \"email\": \"Alverta_Boyer96@gmail.com\"\n    }\n}"
+						},
+						{
+							"name": "Fail Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"name\": \"{{$randomFirstName}}\",\r\n   \"email\": \"{{$randomEmail}}\",\r\n   \"password\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TAK}}/registration",
+									"host": [
+										"{{TAK}}"
+									],
+									"path": [
+										"registration"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "origin,User-Agent"
+								},
+								{
+									"key": "access-control-expose-headers",
+									"value": "WWW-Authenticate,Server-Authorization"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache"
+								},
+								{
+									"key": "content-length",
+									"value": "69"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 07 Nov 2024 13:39:38 GMT"
+								},
+								{
+									"key": "server",
+									"value": "LiteSpeed"
+								},
+								{
+									"key": "platform",
+									"value": "hostinger"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=2592000, h3-29=\":443\"; ma=2592000, h3-Q050=\":443\"; ma=2592000, h3-Q046=\":443\"; ma=2592000, h3-Q043=\":443\"; ma=2592000, quic=\":443\"; ma=2592000; v=\"43,46\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"\\\"password\\\" is not allowed to be empty\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\": \"{{email}}\",\r\n   \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TAK}}/authentications",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"authentications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Add Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var respons = JSON.parse(responseBody)\r",
+									"pm.collectionVariables.set(\"color\", respons.data.color);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Random Color\",\r\n   \"color\": \"{{$randomColor}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TAK}}/categories",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TAK}}/categories/{{color}}",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"categories",
+								"{{color}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Random Color\",\r\n   \"description\": \"{{$randomColor}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TAK}}/categories/{{color}}",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"categories",
+								"{{color}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{TAK}}/categories/{{color}}",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"categories",
+								"{{color}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Add Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var respons = JSON.parse(responseBody)\r",
+									"pm.collectionVariables.set(\"address\", respons.data.address);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"{{$randomFirstName}}\",\r\n   \"phone\": \"{{$randomPhoneNumber}}\",\r\n   \"address\": \"{{$randomStreetAddress}}\",\r\n   \"job description\": \"{{$randomJobDescriptor}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TAK}}/customers",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TAK}}/customers/{{address}}",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"customers",
+								"{{address}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TAK}}/customers",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDdmOGIzZWI2MWI1OGI2N2IxMzQzZjk5ZmRjMWMzNDlkYmFkZWM3YmVjNmMwOTc5YThlMTk0NzNkYzg5ZTI1ZWQ2MDE5NjYyMjUzNTAyMDMiLCJpYXQiOjE2OTgwNzIzNTUuNDE0Njc3LCJuYmYiOjE2OTgwNzIzNTUuNDE0NjgxLCJleHAiOjE3Mjk2OTQ3NTUuNDExOTQ5LCJzdWIiOiIxMTI3Iiwic2NvcGVzIjpbXX0.P4NdlRF18N4xNM-43721i2zuQS2OYnk_tDugNaEyCsxUTazn4klJ11Pc6V--HH1o2m0dazL1uKx8Dv0rwMI2CGDFXAjA65RRCpJIBZgGaG4lARn-oExuC6IB92On0qqGp66Bysr-ViXHuDVdqa6H1bG8rFCYMt6lXS6I8OOxCstz02c1A_NBpfdr85Q_jyg_7u08Camye7UNtWCgnLlGMS0DEPTQrdKLAj-XkHSaSWUFmRmFcFUeYDbT7-gMOVVLV6kpkGX437HYGaTdsDAfxiIOwD_Afrz48opxxq5N0nrLCuExWJCl7--lR2E1HK-CfePegZQWm7VFHSr5RW2Iv8e5Uw2rr8s6bYVsx7aVvaoKy16dY7uRioUrGDYuVvphkfgu9k33291cr56gBvHMGfuNb60Q6REYABisIs0AY2GP7MonUGTiBySaJ9D6hZqPabgScLRYq665Xb_HmNWIWP0FjZ7OB7Mm3Nvm408caJ-7emFxbxOhHY-8THbThS-2xrYVfgiVZQDD_M1tpyEF96btGBmTHFB-jmtDJ29oDIaJPUSDO3ZYhEwzoES9Ife7civQPgl4APo1WEbzE3LFgCZ5My4L5xzg2QRyIr1Iu1m3M4WeX1H9-S8ed2yNcMGfpd4MnqmzikoSnbJHUyDyFD0L-f16N-S-4V0bQAqOPs0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"{{$randomFirstName}}\",\r\n   \"phone\": \"{{$randomPhoneNumber}}\",\r\n   \"address\": \"{{$randomStreetAddress}}\",\r\n   \"job description\": \"{{$randomJobDescriptor}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TAK}}/customers/{{address}}",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"customers",
+								"{{address}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{TAK}}/customers/{{address}}",
+							"host": [
+								"{{TAK}}"
+							],
+							"path": [
+								"customers",
+								"{{address}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TAK",
+			"value": "https://kasir-api.belajarqa.com",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": "Password123",
+			"type": "string"
+		},
+		{
+			"key": "color",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "address",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
